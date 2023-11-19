@@ -15,7 +15,7 @@ class Header extends LitElement {
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
             <span>
-                Neogym
+                Recordgym
             </span>
             </a>
             <menu-gym></menu-gym>
