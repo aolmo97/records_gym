@@ -1,0 +1,25 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # Asegúrate de que esto coincida con tu rama de producción
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.6
+        with:
+          branch: master # La rama en la que GitHub Pages está configurado para desplegar
+          folder: dist # El directorio que deseas desplegar

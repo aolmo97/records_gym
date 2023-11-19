@@ -6,6 +6,8 @@ class MenuGym extends LitElement {
     return this;
   }
   render() {
+    const baseUrl = '/records_gym';
+
     return html`
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,14 +17,14 @@ class MenuGym extends LitElement {
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
             <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="${baseUrl}/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item ">
-                <a class="nav-link" href="/exercises-page">Exercises</a>
+                <a class="nav-link" href="${baseUrl}/exercises-page">Exercises</a>
                 </li>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="trainer.html"> trainers</a>
+                <a class="nav-link" href="${baseUrl}/trainers"> trainers</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="contact.html"> Contact Us</a>
