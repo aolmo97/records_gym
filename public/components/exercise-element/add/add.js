@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
-import {db} from '../../../firebase.js'; 
+import {db} from '../../../../firebase.js'; 
 import { collection, addDoc } from 'firebase/firestore';
-import '../spinner/spinner.js'; 
-import '../modal/modal.js'; 
+import '../../spinner/spinner.js'; 
+import '../../modal/modal.js'; 
 
-class Exercise extends LitElement {
+class AddExercise extends LitElement {
   static get properties() {
     return {
       loading: { type: Boolean },
@@ -42,6 +42,7 @@ class Exercise extends LitElement {
       type: this.querySelector('#type').value,
       muscleGroup: this.querySelector('#muscleGroup').value
     };
+    console.log(exerciseData);
     this.addExerciseToFirebase(exerciseData);
 
   }
@@ -98,4 +99,4 @@ class Exercise extends LitElement {
   }
 }
 
-customElements.define('exercise-element', Exercise);
+customElements.define('exercise-add', AddExercise);

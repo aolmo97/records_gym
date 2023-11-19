@@ -13,6 +13,9 @@ window.addEventListener('load', () => {
   router.setRoutes([
     { path: '/', component: 'home-page' },
     { path: '/exercises-page', component: 'exercises-page' },
+    { path: '/exercises-page/add', component: 'exercises-page' },
+    { path: '/exercises-page/modify', component: 'exercises-page' },
+    { path: '/exercises-page/delete', component: 'exercises-page' },
     { path: '/trainers', component: 'my-trainers' },
     // ... otras rutas
   ]);

@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
-import {db} from '../../../firebase.js'; 
+import {db} from '../../../../firebase.js'; 
 import { collection, addDoc } from 'firebase/firestore';
-import '../spinner/spinner.js'; 
-import '../modal/modal.js'; 
+import '../../spinner/spinner.js'; 
+import '../../modal/modal.js'; 
 
-class Exercise extends LitElement {
+class DeleteExercise extends LitElement {
   static get properties() {
     return {
       loading: { type: Boolean },
@@ -36,6 +36,7 @@ class Exercise extends LitElement {
   handleSubmit(event) {
     event.preventDefault(); 
     this.loading=true;
+    console.log("entra");
     const exerciseData = {
       name: this.querySelector('#exerciseName').value,
       description: this.querySelector('#description').value,
@@ -98,4 +99,4 @@ class Exercise extends LitElement {
   }
 }
 
-customElements.define('exercise-element', Exercise);
+customElements.define('exercise-delete', DeleteExercise);

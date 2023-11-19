@@ -1,7 +1,32 @@
 import { LitElement, html, css } from "lit";
 
 class MenuGym extends LitElement {
-  static styles = css``;
+  static styles = css`
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  `;
   createRenderRoot() {
     return this;
   }
@@ -19,8 +44,15 @@ class MenuGym extends LitElement {
                 <li class="nav-item active">
                 <a class="nav-link" href="${baseUrl}/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item ">
-                <a class="nav-link" href="${baseUrl}/exercises-page">Exercises</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Exercises
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="${baseUrl}/exercises-page/add">Add</a>
+                    <a class="dropdown-item" href="${baseUrl}/exercises-page/modify">Modify</a>
+                    <a class="dropdown-item" href="${baseUrl}/exercises-page/delete">Delete</a>
+                  </div>
                 </li>
                 </li>
                 <li class="nav-item">
