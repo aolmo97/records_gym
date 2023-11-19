@@ -34,34 +34,36 @@ class Exercise extends LitElement {
   render(){
     return html `
     <form @submit="${this.handleSubmit}">
-      <label for="exerciseName">Exercise name:</label>
-        <input type="text" id="exerciseName" name="exerciseName">
-      
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
-      
-        <label for="type">Exercise type:</label>
-        <select id="type" name="type">
-          <option value="cardiovascular">Cardiovascular</option>
-          <option value="strength">Fuerza</option>
-          <!-- Otras opciones... -->
-        </select>
-        <label for="muscleGroup">Muscle Group:</label>
-        <select id="muscleGroup" name="muscleGroup">
-          <option value="core">Núcleo/Core</option>
-          <option value="arms">Brazos</option>
-          <option value="back">Espalda</option>
-          <option value="chest">Pecho</option>
-          <option value="biceps">Biceps</option>
-          <option value="triceps">triceps</option>
-          <option value="shoulders">Hombros</option>
-          <option value="legs">Piernas</option>
-          <option value="glutes">Glúteos</option>
-          <option value="calves">Pantorrillas</option>
-          <option value="abs">Abdominales</option>
-        </select>
-
-        <button type="submit">Add exercise</button>
+        <div>
+          <input type="text" id="exerciseName" name="exerciseName" placeHolder="Exercise name">
+        </div>
+        <div>
+          <input type="text" id="description" name="description" placeHolder="Description" class="message-box">
+        </div>
+        <div>
+          <select id="type" name="type">
+            <option value="cardiovascular">Cardiovascular</option>
+            <option value="strength">Fuerza</option>
+          </select>
+        </div>
+        <div>
+          <select id="muscleGroup" name="muscleGroup">
+            <option value="core">Núcleo/Core</option>
+            <option value="arms">Brazos</option>
+            <option value="back">Espalda</option>
+            <option value="chest">Pecho</option>
+            <option value="biceps">Biceps</option>
+            <option value="triceps">triceps</option>
+            <option value="shoulders">Hombros</option>
+            <option value="legs">Piernas</option>
+            <option value="glutes">Glúteos</option>
+            <option value="calves">Pantorrillas</option>
+            <option value="abs">Abdominales</option>
+          </select>
+        </div>
+        <div class="d-flex">
+          <button type="submit">Add exercise</button>
+        </div>
   </form>
     `
   }
