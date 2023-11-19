@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.5",
