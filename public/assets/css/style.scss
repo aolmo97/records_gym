@@ -461,7 +461,7 @@ a:focus {
 
   form {}
 
-  input {
+  input, select {
     width: 100%;
     border: none;
     background-color: $white;
