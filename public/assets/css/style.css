@@ -478,7 +478,15 @@ a:focus {
   margin-top: 25px;
   padding: 12px;
 }
-
+.contact_section select {
+  width: 100%;
+  border: none;
+  background-color: #ffffff;
+  outline: none;
+  color: #000000;
+  margin-top: 25px;
+  padding: 12px;
+}
 .contact_section input::-webkit-input-placeholder {
   color: #2a2a2c;
 }
