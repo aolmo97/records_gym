@@ -17,6 +17,5 @@ window.addEventListener('load', () => {
     { path: '/exercises-page/modify', component: 'exercises-page' },
     { path: '/exercises-page/delete', component: 'exercises-page' },
     { path: '/trainers', component: 'my-trainers' },
-    // ... otras rutas
   ]);
 });
