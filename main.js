@@ -3,6 +3,8 @@ import './public/pages/exercises-page/add/add-page.js';
 import './public/pages/exercises-page/modify/modify-page.js';
 import './public/pages/exercises-page/delete/delete-page.js';
 
+import './public/pages/training-page/add/add-page';
+
 import { Router } from '@vaadin/router';
 
 window.addEventListener('load', () => {
@@ -15,6 +17,6 @@ window.addEventListener('load', () => {
     { path: '/exercises-page/add', component: 'add-exercises-page' },
     { path: '/exercises-page/modify', component: 'modify-exercises-page' },
     { path: '/exercises-page/delete', component: 'delete-exercises-page' },
-    { path: '/trainers', component: 'my-trainers' },
+    { path: '/training-page/add', component: 'add-training-page' },
   ]);
 });

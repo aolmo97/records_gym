@@ -55,9 +55,16 @@ class MenuGym extends LitElement {
                   </div>
                 </li>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="${baseUrl}/trainers"> trainers</a>
-                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Training
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="${baseUrl}/training-page/add">Add</a>
+                  <a class="dropdown-item" href="${baseUrl}/training-page/modify">Modify</a>
+                  <a class="dropdown-item" href="${baseUrl}/training-page/delete">Delete</a>
+                </div>
+              </li>
                 <li class="nav-item">
                 <a class="nav-link" href="contact.html"> Contact Us</a>
                 </li>
