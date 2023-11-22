@@ -3,8 +3,10 @@ import { db } from '../../../../firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
 import '../../spinner/spinner.js';
 import '../../modal/modal.js';
-import { stylesCommon } from '../../../assets/css/common-elements/common-element.js'
-class AddExercise extends LitElement {
+import '../../form-elements/input/input.js'
+import '../../form-elements/select/select.js'
+
+class AddTraining extends LitElement {
   static get properties() {
     return {
       loading: { type: Boolean },
@@ -22,27 +24,29 @@ class AddExercise extends LitElement {
   createRenderRoot() {
     return this;
   }
-  static styles = stylesCommon;
+  static styles = css`
+  `;
   handleSubmit(event) {
     event.preventDefault();
     this.loading = true;
-    const exerciseData = {
-      name: this.querySelector('#exerciseName').value,
+    const trainingData = {
+      name: this.querySelector('#trainingName').value,
       description: this.querySelector('#description').value,
       type: this.querySelector('#type').value,
       muscleGroup: this.querySelector('#muscleGroup').value
     };
-    this.addExerciseToFirebase(exerciseData);
+    console.log(trainingData);
+    this.addTrainingToFirebase(trainingData);
 
   }
   // Método para añadir datos a Firebase Firestore
-  async addExerciseToFirebase(exerciseData) {
+  async addTrainingToFirebase(trainingData) {
     try {
-      const docRef = await addDoc(collection(db, "exercises"), exerciseData);
-      this.modalMessage = 'Exercise added successfully!';
+      const docRef = await addDoc(collection(db, "training"), trainingData);
+      this.modalMessage = 'Training added successfully!';
       this.showModal = true;
     } catch (e) {
-      this.modalMessage = `Error adding exercise: ${e.message}`;
+      this.modalMessage = `Error adding training: ${e.message}`;
       this.showModal = true;
     } finally {
       this.loading = false;
@@ -51,19 +55,16 @@ class AddExercise extends LitElement {
   render() {
     return html`
     ${this.loading ? html`<gym-spinner></gym-spinner>` : ''}
-    ${this.showModal ? html`<gym-modal title="Sport Exercise" .message=${this.modalMessage} .onClose=${() => this.showModal = false}></gym-modal>` : ''}
+    ${this.showModal ? html`<gym-modal title="Sport Training" .message=${this.modalMessage} .onClose=${() => this.showModal = false}></gym-modal>` : ''}
     <form @submit="${this.handleSubmit}">
         <div>
-          <input type="text" id="exerciseName" name="exerciseName" placeHolder="Exercise name">
+          <input-gym id="trainingName" name="trainingName" placeholder="Training name" labelText="Training name"></input-gym>
         </div>
         <div>
           <input type="text" id="description" name="description" placeHolder="Description" class="message-box">
         </div>
         <div>
-          <select id="type" name="type" class="select-type">
-            <option value="cardiovascular">Cardiovascular</option>
-            <option value="strength">Fuerza</option>
-          </select>
+            <select-days></select-days>
         </div>
         <div>
           <select id="muscleGroup" name="muscleGroup" class="select-type">
@@ -81,11 +82,11 @@ class AddExercise extends LitElement {
           </select>
         </div>
         <div class="d-flex">
-          <button type="submit">Add exercise</button>
+          <button type="submit">Add training</button>
         </div>
   </form>
     `
   }
 }
 
-customElements.define('exercise-add', AddExercise);
+customElements.define('training-add', AddTraining);
