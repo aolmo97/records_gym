@@ -5,6 +5,7 @@ import '../../spinner/spinner.js';
 import '../../modal/modal.js';
 import '../../form-elements/input/input.js'
 import '../../form-elements/select/select.js'
+import { getExercises } from '../../../services/firebase.js'
 
 class AddTraining extends LitElement {
   static get properties() {
@@ -52,6 +53,35 @@ class AddTraining extends LitElement {
       this.loading = false;
     }
   }
+  async connectedCallback() {
+    super.connectedCallback();
+    const querySnapshot = await getExercises();
+    this.exercises = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    this.updateOptions();
+  }
+  updateOptions() {
+    const select = this.querySelector('#muscleGroup');
+    if (select && this.exercises) {
+      this.exercises.map(exercise => {
+        const option = document.createElement('option');
+        option.value = exercise.id;
+        option.textContent = exercise.name;
+        select.appendChild(option);
+      });
+    }
+  }
+
+  handleExerciseSelection(event) {
+    const selectedExerciseId = event.target.value;
+    const selectedExercise = this.exercises.find(exercise => exercise.id === selectedExerciseId);
+
+    if (selectedExercise) {
+      this.querySelector('#exerciseName').value = selectedExercise.name;
+      this.querySelector('#description').value = selectedExercise.description;
+      this.querySelector('#type').value = selectedExercise.type;
+      this.querySelector('#muscleGroup').value = selectedExercise.muscleGroup;
+    }
+  }
   render() {
     return html`
     ${this.loading ? html`<gym-spinner></gym-spinner>` : ''}
@@ -61,24 +91,14 @@ class AddTraining extends LitElement {
           <input-gym id="trainingName" name="trainingName" placeholder="Training name" labelText="Training name"></input-gym>
         </div>
         <div>
-          <input type="text" id="description" name="description" placeHolder="Description" class="message-box">
+          <input-gym id="description" name="description" placeholder="Description" labelText="Description" class="message-box"></input-gym>
         </div>
         <div>
             <select-days></select-days>
         </div>
         <div>
-          <select id="muscleGroup" name="muscleGroup" class="select-type">
-            <option value="core">Núcleo/Core</option>
-            <option value="arms">Brazos</option>
-            <option value="back">Espalda</option>
-            <option value="chest">Pecho</option>
-            <option value="biceps">Biceps</option>
-            <option value="triceps">triceps</option>
-            <option value="shoulders">Hombros</option>
-            <option value="legs">Piernas</option>
-            <option value="glutes">Glúteos</option>
-            <option value="calves">Pantorrillas</option>
-            <option value="abs">Abdominales</option>
+          <select @change="${this.handleExerciseSelection}" id="muscleGroup" name="muscleGroup" class="select-type">
+            <option value="" selected>Sport exercise</option>
           </select>
         </div>
         <div class="d-flex">

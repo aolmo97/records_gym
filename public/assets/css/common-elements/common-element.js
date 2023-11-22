@@ -6,7 +6,7 @@ const stylesCommon = css`
   background-color: $white;
   outline: none;
   color: $black;
-  margin-top: 25px;
+  margin-top: 10px;
   padding: 12px;
   font-family: Poppins, sans;
   font-size: 16px;
@@ -22,12 +22,28 @@ const stylesCommon = css`
   background-color: #ffffff;
   outline: none;
   color: #000000;
-  margin-top: 25px;
+  margin-top: 10px;
   padding: 20px;
   font-family: Poppins, sans;
   font-size: 16px;
   font-stretch 100%;
   font-style normal;
+}
+input.message-box {
+  width: 94%;
+  border: none;
+  background-color: #ffffff;
+  outline: none;
+  color: #000000;
+  margin-top: 10px;
+  font-family: Poppins, sans;
+  font-size: 16px;
+  font-stretch 100%;
+  font-style normal;
+  padding: 45px 12px;
+}
+div {
+  margin-top: 15px;
 }
 `;
 export { stylesCommon };

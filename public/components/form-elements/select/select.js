@@ -14,11 +14,16 @@ class SelectDays extends LitElement {
         this.days = [1, 2, 3, 4, 5, 6];
         this.daySelected = 1;
     }
-
+    handleDaysSelection(event) {
+        const days = event.target.value;
+        console.log(days);
+    }
     render() {
         return html`
-      <label for="days" class="label-type">¿Cuántos días?</label>
-      <select id="days" @change="${this.selectDay}" class="select-type">
+        <div>
+            <label for="days" class="label-type">¿Cuántos días?</label>
+        </div>
+      <select id="days" @change="${this.handleDaysSelection}" class="select-type">
         ${this.days.map(day => html`<option value="${day}">${day} días</option>`)}
       </select>
     `;
