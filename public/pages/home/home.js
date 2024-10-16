@@ -8,6 +8,7 @@ class HomePage extends LitElement {
     return this;
   }
   render() {
+    alert('home');  
     return html`
       <header-gym></header-gym>
       <section class=" slider_section position-relative">
